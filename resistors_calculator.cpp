@@ -16,10 +16,53 @@ Resistors_Calculator::~Resistors_Calculator()
 void Resistors_Calculator::on_calculate_pushButton_clicked()
 {
     QList<Resistor> resistors_list = read_csv("D:\\bom.csv");
-    float div_ratio = 0.5;
-    Resistor * divider_resistors = resistors_search(resistors_list, div_ratio);
-    int i = 0;
+    float div_ratio = get_div_ratio();
+    if(div_ratio > 0 && div_ratio < 1)
+    {
+        QList<Divider> dividers_list = get_all_dividers(resistors_list);
+        for(int i = 0; i < 3; i++ )
+        {
+            ui->resistors_tableWidget->item(0, i)->setText("example");
+        }
+    }
 }
+
+QList<Divider> Resistors_Calculator::get_best_dividers(QList<Divider> dividers_list, float div_ratio)
+{
+    QList<Divider> best_dividers_list;
+
+    return best_dividers_list;
+}
+
+QList<Divider> Resistors_Calculator::get_all_dividers(QList<Resistor> resistors_list)
+{
+    QList<Divider> dividers_list;
+
+    for(int i = 0; i < resistors_list.length(); i++ )
+    {
+        for(int j = 0; j < resistors_list.length(); j++ )
+        {
+            Divider temp_div(resistors_list[i], resistors_list[j]);
+            dividers_list.append(temp_div);
+        }
+    }
+
+    return dividers_list;
+}
+
+float Resistors_Calculator::get_div_ratio()
+{
+    try
+    {
+        return ui->divider_lineEdit->text().toFloat();
+    }
+    catch(...)
+    {
+        return 0;
+    }
+}
+
+
 
 Resistor * Resistors_Calculator::resistors_search(QList<Resistor> resistors_list, float div_ratio)
 {

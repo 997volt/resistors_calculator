@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QStringList>
 #include <resistor.h>
+#include <divider.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Resistors_Calculator; }
@@ -24,6 +25,9 @@ private slots:
     QList<Resistor> read_csv(QString path);
     void on_calculate_pushButton_clicked();
     Resistor * resistors_search(QList<Resistor> resistors_list, float div_ratio);
+    float get_div_ratio();
+    QList<Divider> get_all_dividers(QList<Resistor>);
+    QList<Divider> get_best_dividers(QList<Divider> dividers_list, float div_ratio);
 
 private:
     Ui::Resistors_Calculator *ui;

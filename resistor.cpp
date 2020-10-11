@@ -7,13 +7,6 @@ Resistor::Resistor()
     this->value = 0;
 }
 
-Resistor::Resistor(QString _designator)
-{
-    this->designator = _designator;
-    this->value_s = "";
-    this->value = 0;
-}
-
 Resistor::Resistor(QString _designator, QString _value_s)
 {
     this->designator = _designator;
@@ -50,4 +43,9 @@ void Resistor::get_value_from_string()
 int Resistor::get_value()
 {
     return this->value;
+}
+
+QString Resistor::get_value_s()
+{
+    return this->value_s;
 }
