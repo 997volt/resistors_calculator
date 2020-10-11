@@ -47,3 +47,7 @@ void Resistor::get_value_from_string()
     }
 }
 
+int Resistor::get_value()
+{
+    return this->value;
+}

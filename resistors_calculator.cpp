@@ -13,12 +13,34 @@ Resistors_Calculator::~Resistors_Calculator()
     delete ui;
 }
 
-
-void Resistors_Calculator::on_pushButton_clicked()
+void Resistors_Calculator::on_calculate_pushButton_clicked()
 {
     QList<Resistor> resistors_list = read_csv("D:\\bom.csv");
+    float div_ratio = 0.5;
+    Resistor * divider_resistors = resistors_search(resistors_list, div_ratio);
     int i = 0;
-    i++;
+}
+
+Resistor * Resistors_Calculator::resistors_search(QList<Resistor> resistors_list, float div_ratio)
+{
+    Resistor* divider_resistors = new Resistor[2];
+    float best_div_ratio = 10;
+    float temp_div_ratio;
+    for(int i = 0; i < resistors_list.length(); i++ )
+    {
+        for(int j = 0; j < resistors_list.length(); j++ )
+        {
+            temp_div_ratio = float(resistors_list[j].get_value()) / float( resistors_list[i].get_value() + resistors_list[j].get_value() );
+            if(abs(div_ratio - temp_div_ratio) < abs(best_div_ratio - div_ratio))
+            {
+                best_div_ratio = temp_div_ratio;
+                divider_resistors[0] = resistors_list[i];
+                divider_resistors[1] = resistors_list[j];
+            }
+        }
+    }
+
+    return divider_resistors;
 }
 
 QList<Resistor> Resistors_Calculator::read_csv(QString path)
@@ -58,3 +80,5 @@ QString Resistors_Calculator::get_bom_location()
     }
     return bom_path;
 }
+
+

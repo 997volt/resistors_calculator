@@ -20,9 +20,10 @@ public:
     ~Resistors_Calculator();
 
 private slots:
-    void on_pushButton_clicked();
     QString get_bom_location();
     QList<Resistor> read_csv(QString path);
+    void on_calculate_pushButton_clicked();
+    Resistor * resistors_search(QList<Resistor> resistors_list, float div_ratio);
 
 private:
     Ui::Resistors_Calculator *ui;

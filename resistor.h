@@ -14,6 +14,7 @@ public:
     Resistor(QString _designator);
     Resistor(QString _designator, QString _value_s);
     void get_value_from_string();
+    int get_value();
 };
 
 #endif // RESISTOR_H
