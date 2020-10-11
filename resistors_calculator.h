@@ -25,7 +25,7 @@ private slots:
     QList<Resistor> read_csv(QString path);
     void on_calculate_pushButton_clicked();
     float get_div_ratio();
-    QList<Divider> get_all_dividers(QList<Resistor>);
+    QList<Divider> get_all_dividers(QList<Resistor> resistors_list, int r_tot_min, int r_tot_max);
     QVector<QPair<int,float>> get_best_dividers(QList<Divider> dividers_list, float div_ratio);
     void update_resistors_tableWidget(QVector<Divider> new_dividers);
 

@@ -6,37 +6,57 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>350</width>
-    <height>263</height>
+    <width>335</width>
+    <height>291</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Resistors_Calculator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="r_tot_max_lineEdit"/>
+    </item>
+    <item row="2" column="0">
      <widget class="QLabel" name="divider_label">
       <property name="text">
        <string>div_ratio:</string>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="2" column="1">
      <widget class="QLineEdit" name="divider_lineEdit">
       <property name="text">
        <string/>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="3" column="0" colspan="2">
      <widget class="QPushButton" name="calculate_pushButton">
       <property name="text">
        <string>Choose csv file and calculate</string>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="r_tot_min_lineEdit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="rtotmax_label">
+      <property name="text">
+       <string>R_tot_max:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="rtotmin_label">
+      <property name="text">
+       <string>R_tot_min:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="2">
      <widget class="QTableWidget" name="resistors_tableWidget">
       <property name="enabled">
        <bool>false</bool>
@@ -125,7 +145,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>350</width>
+     <width>335</width>
      <height>21</height>
     </rect>
    </property>

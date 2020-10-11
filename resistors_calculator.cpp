@@ -19,8 +19,9 @@ void Resistors_Calculator::on_calculate_pushButton_clicked()
     float div_ratio = get_div_ratio();
     if(div_ratio > 0 && div_ratio < 1)
     {
-        QList<Divider> dividers_list = get_all_dividers(resistors_list);
-        QVector<QPair<int,float>> best_dividers_indexes = get_best_dividers(dividers_list,div_ratio);
+        QList<Divider> dividers_list = get_all_dividers(
+            resistors_list, ui->r_tot_min_lineEdit->text().toInt(), ui->r_tot_max_lineEdit->text().toInt());
+        QVector<QPair<int,float>> best_dividers_indexes = get_best_dividers(dividers_list, div_ratio);
         QVector<Divider> best_dividers(3);
         for(int i = 0; i < 3; i++ )
         {
@@ -39,7 +40,6 @@ void Resistors_Calculator::update_resistors_tableWidget(QVector<Divider> new_div
         ui->resistors_tableWidget->item(i, 2)->setText(QString::number(new_dividers[i].get_div_ratio()));
     }
 }
-
 
 QVector<QPair<int,float>> Resistors_Calculator::get_best_dividers(QList<Divider> dividers_list, float div_ratio)
 {
@@ -69,7 +69,7 @@ QVector<QPair<int,float>> Resistors_Calculator::get_best_dividers(QList<Divider>
     return best_dividers;
 }
 
-QList<Divider> Resistors_Calculator::get_all_dividers(QList<Resistor> resistors_list)
+QList<Divider> Resistors_Calculator::get_all_dividers(QList<Resistor> resistors_list, int r_tot_min, int r_tot_max)
 {
     QList<Divider> dividers_list;
 
@@ -77,8 +77,12 @@ QList<Divider> Resistors_Calculator::get_all_dividers(QList<Resistor> resistors_
     {
         for(int j = 0; j < resistors_list.length(); j++ )
         {
-            Divider temp_div(resistors_list[i], resistors_list[j]);
-            dividers_list.append(temp_div);
+            int r_tot = resistors_list[i].get_value() + resistors_list[j].get_value();
+            if( r_tot <= r_tot_max && (r_tot >= r_tot_min || r_tot_min <= 0))
+            {
+                Divider temp_div(resistors_list[i], resistors_list[j]);
+                dividers_list.append(temp_div);
+            }
         }
     }
 
