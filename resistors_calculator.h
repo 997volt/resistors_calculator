@@ -24,10 +24,10 @@ private slots:
     QString get_bom_location();
     QList<Resistor> read_csv(QString path);
     void on_calculate_pushButton_clicked();
-    Resistor * resistors_search(QList<Resistor> resistors_list, float div_ratio);
     float get_div_ratio();
     QList<Divider> get_all_dividers(QList<Resistor>);
-    QList<Divider> get_best_dividers(QList<Divider> dividers_list, float div_ratio);
+    QVector<QPair<int,float>> get_best_dividers(QList<Divider> dividers_list, float div_ratio);
+    void update_resistors_tableWidget(QVector<Divider> new_dividers);
 
 private:
     Ui::Resistors_Calculator *ui;

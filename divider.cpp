@@ -16,3 +16,18 @@ float Divider::calculate_divider(int r1_value, int r2_value)
 {
     return float(r2_value / float( r1_value + r2_value ));
 }
+
+float Divider::get_div_ratio()
+{
+    return this->div_ratio;
+}
+
+QString Divider::get_r1_value()
+{
+    return this->r1_value;
+}
+
+QString Divider::get_r2_value()
+{
+    return this->r2_value;
+}

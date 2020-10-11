@@ -20,18 +20,53 @@ void Resistors_Calculator::on_calculate_pushButton_clicked()
     if(div_ratio > 0 && div_ratio < 1)
     {
         QList<Divider> dividers_list = get_all_dividers(resistors_list);
+        QVector<QPair<int,float>> best_dividers_indexes = get_best_dividers(dividers_list,div_ratio);
+        QVector<Divider> best_dividers(3);
         for(int i = 0; i < 3; i++ )
         {
-            ui->resistors_tableWidget->item(0, i)->setText("example");
+            best_dividers[i] = dividers_list[best_dividers_indexes[i].first];
         }
+        update_resistors_tableWidget(best_dividers);
     }
 }
 
-QList<Divider> Resistors_Calculator::get_best_dividers(QList<Divider> dividers_list, float div_ratio)
+void Resistors_Calculator::update_resistors_tableWidget(QVector<Divider> new_dividers)
 {
-    QList<Divider> best_dividers_list;
+    for(int i = 0; i < 3; i++ )
+    {
+        ui->resistors_tableWidget->item(i, 0)->setText(new_dividers[i].get_r1_value());
+        ui->resistors_tableWidget->item(i, 1)->setText(new_dividers[i].get_r2_value());
+        ui->resistors_tableWidget->item(i, 2)->setText(QString::number(new_dividers[i].get_div_ratio()));
+    }
+}
 
-    return best_dividers_list;
+
+QVector<QPair<int,float>> Resistors_Calculator::get_best_dividers(QList<Divider> dividers_list, float div_ratio)
+{
+    // vector of best dividers pair - index, deviation
+    QVector<QPair<int,float>> best_dividers(3,qMakePair(0,1));
+
+    for(int i = 0; i < dividers_list.length(); i++ )
+    {
+        float deviation = div_ratio - dividers_list[i].get_div_ratio();
+        if(abs(deviation) < abs(best_dividers[0].second))
+        {
+            best_dividers[2] = best_dividers[1];
+            best_dividers[1] = best_dividers[0];
+            best_dividers[0] = qMakePair(i,deviation);
+        }
+        else if (abs(deviation) < abs(best_dividers[1].second))
+        {
+            best_dividers[2] = best_dividers[1];
+            best_dividers[1] = qMakePair(i,deviation);
+        }
+        else if (abs(deviation) < abs(best_dividers[2].second))
+        {
+            best_dividers[2] = qMakePair(i,deviation);
+        }
+    }
+
+    return best_dividers;
 }
 
 QList<Divider> Resistors_Calculator::get_all_dividers(QList<Resistor> resistors_list)
@@ -60,30 +95,6 @@ float Resistors_Calculator::get_div_ratio()
     {
         return 0;
     }
-}
-
-
-
-Resistor * Resistors_Calculator::resistors_search(QList<Resistor> resistors_list, float div_ratio)
-{
-    Resistor* divider_resistors = new Resistor[2];
-    float best_div_ratio = 10;
-    float temp_div_ratio;
-    for(int i = 0; i < resistors_list.length(); i++ )
-    {
-        for(int j = 0; j < resistors_list.length(); j++ )
-        {
-            temp_div_ratio = float(resistors_list[j].get_value()) / float( resistors_list[i].get_value() + resistors_list[j].get_value() );
-            if(abs(div_ratio - temp_div_ratio) < abs(best_div_ratio - div_ratio))
-            {
-                best_div_ratio = temp_div_ratio;
-                divider_resistors[0] = resistors_list[i];
-                divider_resistors[1] = resistors_list[j];
-            }
-        }
-    }
-
-    return divider_resistors;
 }
 
 QList<Resistor> Resistors_Calculator::read_csv(QString path)

@@ -14,6 +14,9 @@ private:
 public:
     Divider();
     Divider(Resistor r1, Resistor r2);
+    float get_div_ratio();
+    QString get_r1_value();
+    QString get_r2_value();
 };
 
 #endif // DIVIDER_H
