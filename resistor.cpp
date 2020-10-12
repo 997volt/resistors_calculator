@@ -18,12 +18,14 @@ Resistor::Resistor(QString _designator, QString _value_s, int _tol)
 {
     this->designator = _designator;
     this->value_s = _value_s;
+    parse_other_formats();
     get_value_from_string();
     this->tol = _tol;
+    this->value_s = _value_s + " " + QString::number(_tol) + "%";
 }
 
 void Resistor::get_value_from_string()
-{
+{    
     int r_index = this->value_s.indexOf("R");
     int k_index = this->value_s.indexOf("k");
     int m_index = this->value_s.indexOf("M");
@@ -45,6 +47,16 @@ void Resistor::get_value_from_string()
             this->value = 1000 * (this->value_s.left(m_index).toInt() * 1000 + this->value_s.right(m_index).toInt() * 100);
         else
             this->value = this->value_s.left(m_index).toInt() * 1000 * 1000;
+    }
+}
+
+void Resistor::parse_other_formats()
+{
+    this->value_s.replace(",",".");
+    if(this->value_s.contains("."))
+    {
+        this->value_s.replace(".",this->value_s.right(1));
+        this->value_s.chop(1);
     }
 }
 
