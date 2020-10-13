@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>549</width>
-    <height>310</height>
+    <width>645</width>
+    <height>654</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>2</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Resistors_Calculator</string>
@@ -16,47 +22,178 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="1">
-     <widget class="QLineEdit" name="r_tot_max_lineEdit"/>
+     <widget class="QLineEdit" name="r_tot_max_lineEdit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
     </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="divider_label">
-      <property name="text">
-       <string>div_ratio:</string>
+    <item row="8" column="0" colspan="4">
+     <widget class="QTextBrowser" name="events_textBrowser">
+      <property name="enabled">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
      <widget class="QLineEdit" name="divider_lineEdit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="text">
        <string/>
       </property>
      </widget>
     </item>
-    <item row="3" column="0" colspan="2">
-     <widget class="QPushButton" name="calculate_pushButton">
-      <property name="text">
-       <string>Choose csv file and calculate</string>
+    <item row="7" column="0" colspan="4">
+     <widget class="QTableWidget" name="resistors_co2_tableWidget">
+      <property name="enabled">
+       <bool>false</bool>
       </property>
+      <row>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>R1</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>R2_1</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>R2_2</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>div_ratio</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>div_ratio_min</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>div_ratio_max</string>
+       </property>
+      </column>
+      <item row="0" column="0">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="0" column="1">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="0" column="2">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="0" column="3">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="0" column="4">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="0" column="5">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="0">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="1">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="2">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="3">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="4">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="5">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="0">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="1">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="2">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="3">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="4">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="5">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="r_tot_min_lineEdit"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="rtotmax_label">
-      <property name="text">
-       <string>R_tot_max:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="rtotmin_label">
-      <property name="text">
-       <string>R_tot_min:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0" colspan="2">
+    <item row="4" column="0" colspan="4">
      <widget class="QTableWidget" name="resistors_tableWidget">
       <property name="enabled">
        <bool>false</bool>
@@ -79,6 +216,153 @@
       <column>
        <property name="text">
         <string>R1</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>R2</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>-</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>div_ratio</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>div_ratio_min</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>div_ratio_max</string>
+       </property>
+      </column>
+      <item row="0" column="0">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="0" column="1">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="0" column="2">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="0" column="3">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="0" column="4">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="0" column="5">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="0">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="1">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="2">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="3">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="4">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="5">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="0">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="1">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="2">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="3">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="4">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="2" column="5">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="6" column="0" colspan="4">
+     <widget class="QTableWidget" name="resistors_co1_tableWidget">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <row>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>R1_1</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>R1_2</string>
        </property>
       </column>
       <column>
@@ -126,6 +410,11 @@
         <string>-</string>
        </property>
       </item>
+      <item row="0" column="5">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
       <item row="1" column="0">
        <property name="text">
         <string>-</string>
@@ -147,6 +436,11 @@
        </property>
       </item>
       <item row="1" column="4">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item row="1" column="5">
        <property name="text">
         <string>-</string>
        </property>
@@ -176,6 +470,55 @@
         <string>-</string>
        </property>
       </item>
+      <item row="2" column="5">
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="rtotmin_label">
+      <property name="text">
+       <string>R_tot_min:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="r_tot_min_lineEdit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="divider_label">
+      <property name="text">
+       <string>div_ratio:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="rtotmax_label">
+      <property name="text">
+       <string>R_tot_max:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2" rowspan="4">
+     <widget class="QPushButton" name="calculate_pushButton">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>2</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Choose csv file and calculate</string>
+      </property>
      </widget>
     </item>
    </layout>
@@ -185,7 +528,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>549</width>
+     <width>645</width>
      <height>21</height>
     </rect>
    </property>

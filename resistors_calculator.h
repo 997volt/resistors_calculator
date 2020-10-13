@@ -7,6 +7,7 @@
 #include <QStringList>
 #include <resistor.h>
 #include <divider.h>
+#include <QDateTime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Resistors_Calculator; }
@@ -28,6 +29,7 @@ private slots:
     QList<Divider> get_all_dividers(QList<Resistor> resistors_list, int r_tot_min, int r_tot_max);
     QVector<QPair<int,float>> get_best_dividers(QList<Divider> dividers_list, float div_ratio);
     void update_resistors_tableWidget(QVector<Divider> new_dividers);
+    void deviation_indexer(QVector<QPair<int,float>> &best_dividers, int index, float deviation, int config);
 
 private:
     Ui::Resistors_Calculator *ui;
