@@ -24,6 +24,7 @@ Divider::Divider(Resistor r1, Resistor r2, Resistor r3, int _config)
     set_div_ratio_minmax(r1, r2, r3);
 }
 
+
 void Divider::set_div_ratio(int r1_value, int r2_value)
 {
     this->div_ratio = float(r2_value) / float(r1_value + r2_value);

@@ -24,6 +24,23 @@ Resistor::Resistor(QString _designator, QString _value_s, int _tol)
     this->value_s = _value_s + " " + QString::number(_tol) + "%";
 }
 
+
+int Resistor::get_value()
+{
+    return this->value;
+}
+
+QString Resistor::get_value_s()
+{
+    return this->value_s;
+}
+
+int Resistor::get_tol()
+{
+    return this->tol;
+}
+
+
 void Resistor::get_value_from_string()
 {    
     int r_index = this->value_s.indexOf("R");
@@ -60,17 +77,3 @@ void Resistor::parse_other_formats()
     }
 }
 
-int Resistor::get_value()
-{
-    return this->value;
-}
-
-QString Resistor::get_value_s()
-{
-    return this->value_s;
-}
-
-int Resistor::get_tol()
-{
-    return this->tol;
-}
